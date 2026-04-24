@@ -1,6 +1,6 @@
-# 🧠 ExamForge — Guia 
+# 🧠 RevisAI — Guia 
 
-Este documento apresenta o passo a passo para configurar e rodar o backend e o frontend do projeto **ExamForge**.
+Este documento apresenta o passo a passo para configurar e rodar o backend e o frontend do projeto **RevisAI**.
 
 ### 📥 1. Clonar o Repositório
 
