@@ -5,7 +5,7 @@ Este documento apresenta o passo a passo para configurar e rodar o backend e o f
 ### 📥 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/Gabriel-marques-araujo/ExamForge.git
+git clone https://github.com/eduardomlmelo/Backend-RevisAI.git
 ```
 
 -----
@@ -15,7 +15,7 @@ git clone https://github.com/Gabriel-marques-araujo/ExamForge.git
 Primeiro, acesse a pasta do backend:
 
 ```bash
-cd ExamForge/backend
+cd Backend-RevisAI
 ```
 
 #### 🌱 3. Criar o Ambiente Virtual
@@ -51,7 +51,7 @@ pip install -r requirements.txt
 Abra este arquivo e adicione a seguinte linha (substituindo pelo valor real da sua chave):
 
 ```env
-GOOGLE_GEMINI_KEY=sua chave aqui
+AWS_KEY=sua chave aqui
 ```
 
 #### ▶️ 6. Rodar o Backend
@@ -59,7 +59,7 @@ GOOGLE_GEMINI_KEY=sua chave aqui
 Inicie o servidor localmente:
 
 ```bash
-uvicorn main:app --reload
+
 ```
 
 O backend estará disponível em: `http://127.0.0.1:8000`
@@ -71,7 +71,7 @@ O backend estará disponível em: `http://127.0.0.1:8000`
 Abra um **novo terminal** para não fechar o backend e navegue até a pasta do frontend:
 
 ```bash
-cd ExamForge/frontend
+cd Frontend-RevisAI
 ```
 
 > ⚠️ **Nota:** É necessário ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
