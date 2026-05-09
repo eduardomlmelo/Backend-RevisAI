@@ -47,6 +47,7 @@ app.post('/api/generate-flashcards', async (req, res) => {
     const responseText = await aiProvider.generateFlashcards(prompt);
     
     // Parsear resposta JSON
+    //mudar lógica para .md
     let flashcardsData;
     try {
       flashcardsData = JSON.parse(responseText);
