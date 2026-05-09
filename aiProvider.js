@@ -35,8 +35,16 @@ class AWSBedrockProvider extends AIProvider {
 
   async generateFlashcards(prompt) {
     try {
-      // Converter para .md
-      const systemPrompt = 'Você é um assistente que gera flashcards para estudo. Responda sempre em JSON com a estrutura: { "flashcards": [ { "tema": "string", "nivel": "iniciante|intermediario|avancado", "pergunta": "string", "resposta": "string" } ] }';
+      const systemPrompt = `Você é um assistente que gera flashcards para estudo. Responda sempre em formato Markdown (.md) com a seguinte estrutura para cada flashcard:
+
+## Tema: [tema]
+**Nível:** [iniciante|intermediario|avancado]
+
+**Pergunta:** [pergunta]
+
+**Resposta:** [resposta]
+
+---`;
       
       const params = {
         modelId: this.modelId,

@@ -46,30 +46,20 @@ app.post('/api/generate-flashcards', async (req, res) => {
     // Gerar resposta com o provedor de IA configurado
     const responseText = await aiProvider.generateFlashcards(prompt);
     
-    // Parsear resposta JSON
-    //mudar lógica para .md
-    let flashcardsData;
-    try {
-      flashcardsData = JSON.parse(responseText);
-    } catch (parseError) {
-      console.error('❌ Erro ao parsear resposta da IA:', parseError.message);
+    // A resposta agora é um texto em Markdown (.md)
+    if (!responseText || typeof responseText !== 'string') {
       return res.status(500).json({ 
-        error: 'Erro ao processar resposta da IA. Verifique o formato retornado.' 
+        error: 'Resposta da IA inválida ou vazia.' 
       });
     }
 
-    // Validar estrutura da resposta
-    if (!flashcardsData.flashcards || !Array.isArray(flashcardsData.flashcards)) {
-      return res.status(500).json({ 
-        error: 'Resposta da IA não contém array "flashcards"' 
-      });
-    }
+    const flashcardsMarkdown = responseText;
 
     // Salvar no Firestore
     const docRef = await db.collection('flashcards').add({
       userId,
       prompt,
-      flashcards: flashcardsData.flashcards,
+      content: flashcardsMarkdown, // Salvando o conteúdo em .md
       provider: process.env.AI_PROVIDER || 'openai',
       createdAt: admin.firestore.FieldValue.serverTimestamp()
     });
@@ -78,7 +68,7 @@ app.post('/api/generate-flashcards', async (req, res) => {
 
     res.status(201).json({ 
       id: docRef.id, 
-      flashcards: flashcardsData.flashcards 
+      content: flashcardsMarkdown 
     });
 
   } catch (error) {
